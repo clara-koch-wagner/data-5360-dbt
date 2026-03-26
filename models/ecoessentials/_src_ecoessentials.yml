@@ -1,0 +1,19 @@
+version: 2
+sources:
+  - name: ecoessentials_landing
+    database: clarakoch
+    schema: dw_ecoessentials_ecoessentials_transactional_db
+    tables:
+      - name: customer
+      - name: orders
+        identifier: ORDER
+        quoting:
+          identifier: true
+      - name: order_line
+      - name: product
+      - name: promotional_campaign
+  - name: ecoessentials_marketing_landing
+    database: clarakoch
+    schema: s3_ecoessentials
+    tables:
+      - name: marketingemails
