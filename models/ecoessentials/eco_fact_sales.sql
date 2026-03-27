@@ -7,8 +7,7 @@
 
 with orders as (
     select *
-    from {{ source('ecoessentials_landing', 'orders') }}
-),
+    from {{ source('ecoessentials_landing', 'order') }}),
 
 order_lines as (
     select *
@@ -33,7 +32,7 @@ left join {{ ref('eco_dim_product') }} dp
     on ol.product_id = dp.product_id
 left join {{ ref('eco_dim_person') }} dpe
     on o.customer_id = dpe.person_id
-left join {{ ref('eco_dim_promotional_campaign') }} dc
+left join {{ ref('eco_dim_campaign') }} dc
     on ol.campaign_id = dc.campaign_id
 left join {{ ref('eco_dim_date') }} dd
     on cast(o.order_timestamp as date) = dd.date_key
