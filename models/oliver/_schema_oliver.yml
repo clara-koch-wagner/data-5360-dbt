@@ -1,0 +1,51 @@
+version: 2
+models:
+  - name: oliver_dim_customer
+    description: "Oliver Customer Dimension"
+    columns:
+      - name: customer_key
+        tests:
+          - unique
+
+  - name: oliver_dim_date
+    description: "Oliver Date Dimension"
+    columns:
+      - name: date_key
+        tests:
+          - not_null
+
+  - name: oliver_dim_employee
+    description: "Oliver Employee Dimension"
+    columns:
+      - name: position
+        tests:
+          - accepted_values:
+              values:
+                - "Cashier"
+                - "Stock Clerk"
+                - "Sales Associate"
+                - "Manager"
+                - "Customer Service"
+
+  - name: oliver_dim_product
+    description: "Oliver Product Dimension"
+    columns:
+      - name: product_key
+        tests:
+          - unique
+
+  - name: oliver_dim_store
+    description: "Oliver Store Dimension"
+    columns:
+      - name: store_key
+        tests:
+          - not_null
+
+  - name: fact_sales
+    description: "Oliver Purchase Fact"
+    columns:
+      - name: customer_key
+        tests:
+          - relationships:
+              to: ref('oliver_dim_customer')
+              field: customer_key

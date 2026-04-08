@@ -1,0 +1,110 @@
+version: 2
+
+models:
+  - name: eco_fact_email
+    description: Fact table capturing email marketing events at the grain of one record per email event (send, open, or click) per subscriber.
+    columns:
+      - name: email_fact_key
+        description: Surrogate primary key for the email fact table, generated from emaileventid.
+      - name: date_key
+        description: Foreign key to the date dimension for when the email event occurred.
+      - name: time_key
+        description: Foreign key to the time dimension for when the email event occurred.
+      - name: person_key
+        description: Foreign key to the person dimension identifying the subscriber.
+      - name: campaign_key
+        description: Foreign key to the campaign dimension identifying the marketing campaign.
+      - name: event_key
+        description: Foreign key to the event dimension identifying the type of email event.
+      - name: email_key
+        description: Foreign key to the email dimension identifying the email that was sent.
+
+  - name: eco_dim_email
+    description: Email dimension containing distinct emails used in marketing campaigns.
+    columns:
+      - name: email_key
+        description: Surrogate primary key for the email dimension.
+      - name: email_id
+        description: Business key for the email.
+      - name: email_name
+        description: Name or subject line of the email.
+
+  - name: eco_dim_event
+    description: Event dimension containing the types of email engagement events.
+    columns:
+      - name: event_key
+        description: Surrogate primary key for the event dimension.
+      - name: event_name
+        description: Name of the event type such as SENT, OPEN, or CLICK.
+
+  - name: eco_dim_campaign
+    description: Campaign dimension containing marketing campaign details.
+    columns:
+      - name: campaign_key
+        description: Surrogate primary key for the campaign dimension.
+      - name: campaign_id
+        description: Business key for the campaign.
+      - name: campaign_name
+        description: Name of the marketing campaign.
+      - name: campaign_discount
+        description: Discount associated with the campaign.
+
+  - name: eco_dim_person
+    description: Person dimension containing customer and subscriber details.
+    columns:
+      - name: person_key
+        description: Surrogate primary key for the person dimension.
+      - name: person_id
+        description: Business key for the person.
+      - name: subscriber_id
+        description: Subscriber identifier linked to the marketing platform.
+      - name: person_first_name
+        description: Person first name.
+      - name: person_last_name
+        description: Person last name.
+      - name: person_phone
+        description: Person phone number.
+      - name: person_address
+        description: Person street address.
+      - name: person_city
+        description: Person city.
+      - name: person_state
+        description: Person state.
+      - name: person_zip
+        description: Person zip code.
+      - name: person_country
+        description: Person country.
+      - name: person_email
+        description: Person email address.
+
+  - name: eco_dim_date
+    description: Date dimension containing calendar attributes for reporting.
+    columns:
+      - name: date_key
+        description: Primary key for the date dimension.
+      - name: full_date
+        description: Full calendar date.
+      - name: day
+        description: Day of the month.
+      - name: month
+        description: Month number.
+      - name: month_name
+        description: Month name.
+      - name: year
+        description: Year number.
+      - name: quarter
+        description: Quarter of the year.
+      - name: day_of_week
+        description: Day of the week.
+
+  - name: eco_dim_time
+    description: Time dimension containing time of day attributes for reporting.
+    columns:
+      - name: time_key
+        description: Primary key for the time dimension.
+      - name: hour
+        description: Hour of the day.
+      - name: minute
+        description: Minute of the hour.
+      - name: second
+        description: Second of the minute.
