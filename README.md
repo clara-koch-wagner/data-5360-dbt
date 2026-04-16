@@ -1,7 +1,7 @@
 # Eco Essentials Marketing Data Mart
 
 **USU Data Warehousing — Final Project**
-**Team:** Clara Koch & [Partner Name]
+**Team:** Clara Koch & Abigail Ford
 
 ---
 
@@ -112,15 +112,5 @@ All chart data is fetched from REST API endpoints (`/api/sales-by-month`, `/api/
 - **Authentication matters.** Connecting a live application to a data warehouse requires secure, token-based auth — not hardcoded credentials.
 - **Real-time dashboards close the gap** between data and decisions. Leaders can check campaign performance without waiting on a weekly report.
 
----
-
-## Team
-
-| Name | Contributions |
-|---|---|
-| Clara Koch | [your areas — e.g., dbt modeling, dashboard frontend, Snowflake schema design] |
-| [Partner Name] | [partner areas — e.g., Fivetran setup, API development, data validation] |
-
----
 
 *Built for USU Data Warehousing — Spring 2026*
